@@ -293,7 +293,7 @@
 		<dependency>
 			<groupId>SSMCore</groupId>
 			<artifactId>SSMCore</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<version>0.0.2</version>
 		</dependency>
 	</dependencies>
 </project>

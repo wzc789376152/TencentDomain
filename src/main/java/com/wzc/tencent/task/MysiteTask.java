@@ -18,8 +18,8 @@ public class MysiteTask {
 	@Autowired
 	private TencentDomainService tencentDomainService;
 
-	@Scheduled(cron = "0 0 0/1 * * ?")
-	//@Scheduled(cron = "0/10 * * * * ?")
+	//@Scheduled(cron = "0 0 0/1 * * ?")
+	@Scheduled(cron = "0/10 * * * * ?")
 	public void ChangeIpTask() {
 		String newIp = IpUtil.getIp();
 		Boolean result = false;
