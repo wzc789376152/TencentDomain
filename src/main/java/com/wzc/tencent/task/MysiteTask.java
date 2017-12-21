@@ -23,8 +23,8 @@ public class MysiteTask {
 	@Autowired
 	private EmailService emailService;
 
-	//@Scheduled(cron = "0 0 0/1 * * ?")
-	@Scheduled(cron = "0/10 * * * * ?")
+	@Scheduled(cron = "0 0 0/1 * * ?")
+	//@Scheduled(cron = "0/10 * * * * ?")
 	public void ChangeIpTask() {
 		try {
 			String newIp = IpHelper.getPublicIp();
