@@ -64,7 +64,7 @@
 	<task:annotation-driven />
 	<!-- 引入配置文件 -->
 	<context:property-placeholder location="classpath:*.properties" />
-	<bean class="com.wzc.SSMCore.domain.TencentDomainService">
+	<bean class="com.wzc.ssm.domain.impl.TencentDomainService">
 		<property name="region" value="${region}"></property>
 		<property name="secretId" value="${secretId}"></property>
 		<property name="domain" value="${domain}"></property>

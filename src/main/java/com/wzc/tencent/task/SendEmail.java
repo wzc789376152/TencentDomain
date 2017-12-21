@@ -20,13 +20,13 @@ public class SendEmail {
 	public static void sendTxtMail(String toUser, String context) throws Exception {
 		Properties props = new Properties();
 			
-		//props.setProperty("mail.smtp.host",SMTPHOST);        //Ö¸¶¨SMTP·şÎñÆ÷  
+		//props.setProperty("mail.smtp.host",SMTPHOST);        //æŒ‡å®šSMTPæœåŠ¡å™¨  
 
-        //props.setProperty("mail.smtp.auth","false");          //Ö¸¶¨ÊÇ·ñĞèÒªSMTPÑéÖ¤  
+        //props.setProperty("mail.smtp.auth","false");          //æŒ‡å®šæ˜¯å¦éœ€è¦SMTPéªŒè¯  
         
-        //props.setProperty("mail.smtp.port", PORT); //Ö¸¶¨¶Ë¿Ú
+        //props.setProperty("mail.smtp.port", PORT); //æŒ‡å®šç«¯å£
        
-        //props.setProperty("mail.smtp.socketFactory.class", SSL_FACTORY);//ssl¼ÓÃÜ
+        //props.setProperty("mail.smtp.socketFactory.class", SSL_FACTORY);//sslåŠ å¯†
         
         //props.setProperty("mail.smtp.socketFactory.port", PORT);
         
@@ -35,21 +35,21 @@ public class SendEmail {
 		Session session = Session.getInstance(props, null);
 		
 		
-		//session.setDebug(true);// ´ò¿ªdebugÄ£Ê½£¬»á´òÓ¡·¢ËÍÏ¸½Úµ½console
+		//session.setDebug(true);// æ‰“å¼€debugæ¨¡å¼ï¼Œä¼šæ‰“å°å‘é€ç»†èŠ‚åˆ°console
 		 
-		Message message = new MimeMessage(session); // ÊµÀı»¯Ò»¸öMimeMessage¼¯³É×Ôabstract
-		message.setFrom(new InternetAddress(MimeUtility.encodeText("ÑîÃÎºÛ","UTF-8",null)+"<"+EMAILNAME+">")); // ÉèÖÃ·¢³ö·½,Ê¹ÓÃsetXXXÉèÖÃµ¥ÓÃ»§£¬Ê¹ÓÃaddXXXÌí¼ÓInternetAddress[]
+		Message message = new MimeMessage(session); // å®ä¾‹åŒ–ä¸€ä¸ªMimeMessageé›†æˆè‡ªabstract
+		message.setFrom(new InternetAddress(MimeUtility.encodeText("æ¨æ¢¦ç—•","UTF-8",null)+"<"+EMAILNAME+">")); // è®¾ç½®å‘å‡ºæ–¹,ä½¿ç”¨setXXXè®¾ç½®å•ç”¨æˆ·ï¼Œä½¿ç”¨addXXXæ·»åŠ InternetAddress[]
 
-		message.setContent(context,"text/html;charset=utf-8"); // ÉèÖÃÎÄ±¾ÄÚÈİ
-		// µ¥Ò»ÎÄ±¾Ê¹ÓÃsetText,Multipart¸´ÔÓ¶ÔÏóÊ¹ÓÃsetContent
+		message.setContent(context,"text/html;charset=utf-8"); // è®¾ç½®æ–‡æœ¬å†…å®¹
+		// å•ä¸€æ–‡æœ¬ä½¿ç”¨setText,Multipartå¤æ‚å¯¹è±¡ä½¿ç”¨setContent
 
-		message.setSubject(MimeUtility.encodeText("»¶Ó­·ÃÎÊÎÒµÄ¸öÈËÍøÕ¾","UTF-8",null)); // ÉèÖÃ±êÌâ
+		message.setSubject(MimeUtility.encodeText("æ¬¢è¿è®¿é—®æˆ‘çš„ä¸ªäººç½‘ç«™","UTF-8",null)); // è®¾ç½®æ ‡é¢˜
 
-		message.setRecipient(Message.RecipientType.TO, new InternetAddress(toUser)); // ÉèÖÃ½ÓÊÕ·½
+		message.setRecipient(Message.RecipientType.TO, new InternetAddress(toUser)); // è®¾ç½®æ¥æ”¶æ–¹
 		/**
-		 * Ê¹ÓÃ¾²Ì¬·½·¨Ã¿´Î·¢ËÍĞèÒª½¨Á¢Ò»¸öµ½smtp·şÎñÆ÷µÄÁ´½Ó£¬Äã¿ÉÒÔÊÖ¶¯¿ØÖÆÁ¬½Ó×´Ì¬
-		 * £¬Í¨¹ısession»ñµÃtansport£¬Á¬½Óµ½mailserver£¬¶øsession¾Í¿ÉÒÔÊ¹ÓÃSession.
-		 * getDefaultInstance(props,null);»ñµÃ
+		 * ä½¿ç”¨é™æ€æ–¹æ³•æ¯æ¬¡å‘é€éœ€è¦å»ºç«‹ä¸€ä¸ªåˆ°smtpæœåŠ¡å™¨çš„é“¾æ¥ï¼Œä½ å¯ä»¥æ‰‹åŠ¨æ§åˆ¶è¿æ¥çŠ¶æ€
+		 * ï¼Œé€šè¿‡sessionè·å¾—tansportï¼Œè¿æ¥åˆ°mailserverï¼Œè€Œsessionå°±å¯ä»¥ä½¿ç”¨Session.
+		 * getDefaultInstance(props,null);è·å¾—
 		 */
 		Transport transport = session.getTransport("smtp");
 		System.out.println("sendEmailto:---->"+toUser);
