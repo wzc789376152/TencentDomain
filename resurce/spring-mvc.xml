@@ -64,10 +64,18 @@
 	<task:annotation-driven />
 	<!-- 引入配置文件 -->
 	<context:property-placeholder location="classpath:*.properties" />
+	
 	<bean class="com.wzc.ssm.domain.impl.TencentDomainService">
 		<property name="region" value="${region}"></property>
 		<property name="secretId" value="${secretId}"></property>
 		<property name="domain" value="${domain}"></property>
 		<property name="secretKey" value="${secretKey}"></property>
+	</bean>
+	
+	<bean class="com.wzc.ssm.email.impl.EmailService">
+		<property name="smtpHost" value="${smtpHost}"></property>
+		<property name="emailName" value="${emailName}"></property>
+		<property name="emailPassword" value = "${emailPassword}"></property>
+		<property name="fromName" value = "${fromName}"></property>
 	</bean>
 </beans>

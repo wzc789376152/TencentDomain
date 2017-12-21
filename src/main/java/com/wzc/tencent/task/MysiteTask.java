@@ -11,18 +11,23 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.wzc.ssm.domain.impl.TencentDomainService;
+import com.wzc.ssm.email.dto.EmailOption;
+import com.wzc.ssm.email.impl.EmailService;
+import com.wzc.ssm.util.IpHelper;
 
 @Component("myTask")
 public class MysiteTask {
 
 	@Autowired
 	private TencentDomainService tencentDomainService;
+	@Autowired
+	private EmailService emailService;
 
-	// @Scheduled(cron = "0 0 0/1 * * ?")
+	//@Scheduled(cron = "0 0 0/1 * * ?")
 	@Scheduled(cron = "0/10 * * * * ?")
 	public void ChangeIpTask() {
 		try {
-			String newIp = IpUtil.getIp();
+			String newIp = IpHelper.getPublicIp();
 			Boolean result = false;
 			if (newIp == null || newIp.equals("")) {
 				return;
@@ -38,12 +43,11 @@ public class MysiteTask {
 				param.put("subDomain", "@");
 				param.put("recordType", "A");
 				param.put("value", newIp);
-				param.put("recordLine", "Ĭ��");
+				param.put("recordLine", "默认");
 				String data = tencentDomainService.get(param);
 				if (JSON.parseObject(data).getString("code").equals("0")) {
 					result = true;
 				}
-
 				return;
 			}
 			int i = 0;
@@ -75,7 +79,8 @@ public class MysiteTask {
 				}
 			}
 			if (result) {
-				SendEmail.sendTxtMail("346671169@qq.com", "服务器IP修改为：" + newIp);
+				EmailOption option = new EmailOption("346671169@qq.com","默认标题","服务器IP修改为：" + newIp);
+				emailService.sendEmail(option);
 			}
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
