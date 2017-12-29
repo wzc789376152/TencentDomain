@@ -15,7 +15,7 @@
 				</excludes>
 			</resource>
 			<resource>  
-                <directory>resurce</directory>  
+                <directory>resource</directory>  
                 <includes>  
                     <include>**/*.properties</include>  
                     <include>**/*.xml</include>  
@@ -29,7 +29,7 @@
 				<artifactId>tomcat7-maven-plugin</artifactId>
 				<version>2.2</version>
 				<configuration>
-					<url>http://wzc789376152.top:5001/manager/text</url>
+					<url>http://yangmh.top:5001/manager/text</url>
 					<username>admin</username>
 					<password>wzc789376152</password>
 					<update>true</update>
@@ -57,7 +57,7 @@
 		<dependency>
 			<groupId>SSMCore</groupId>
 			<artifactId>SSMCore</artifactId>
-			<version>0.0.3</version>
+			<version>0.0.4</version>
 		</dependency>
 	</dependencies>
 </project>
