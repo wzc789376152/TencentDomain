@@ -32,10 +32,10 @@ public class MysiteTask {
 			List<Record> records = tencentDomainService.getDomainRecords();
 			if (records.size()==0) {
 				Record record = new Record();
-				record.setSubDomain("@");
-				record.setRecordType("A");
+				record.setName("@");
+				record.setType("A");
 				record.setValue(newIp);
-				record.setRecordLine("默认");
+				record.setLine("默认");
 				records.add(record);
 				result = true;
 			}else {
