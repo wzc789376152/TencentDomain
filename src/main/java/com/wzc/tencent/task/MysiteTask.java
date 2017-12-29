@@ -28,6 +28,7 @@ public class MysiteTask {
 			if (newIp == null || newIp.equals("")) {
 				return;
 			}
+			
 			List<Record> records = tencentDomainService.getDomainRecords();
 			if (records.size()==0) {
 				Record record = new Record();
